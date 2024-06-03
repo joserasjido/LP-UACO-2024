@@ -1,0 +1,17 @@
+{
+    "name": "laboratorio/clientes",
+    "description": "Sistema de gestión de clientes",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "app\\core\\": "core/",
+            "app\\libs\\": "libs/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jose Rasjido"
+        }
+    ],
+    "require": {}
+}

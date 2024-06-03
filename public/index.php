@@ -1,8 +1,9 @@
 <?php
 
     require_once "../app/config/AppConfig.php";
-    require_once APP_CONTROLLERS . "base/InterfaceController.php";
-    require_once APP_CONTROLLERS . "UsuarioController.php";
+    require_once "../app/vendor/autoload.php";
+
+
 
     use app\core\controller\UsuarioController;
     $controller;
