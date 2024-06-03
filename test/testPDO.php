@@ -13,7 +13,7 @@ try{
     $data = [
         "apellido" => "Rasjido",
         "nombres" => "Jose",
-        "cuenta" => "jrasjido"
+        "cuenta" => "joseras"
     ];
 
     $usuario = new UsuarioDTO($data);

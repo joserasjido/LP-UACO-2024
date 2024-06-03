@@ -2,13 +2,13 @@
 
 namespace app\core\model\base;
 
-use app\core\model\dto\UsuarioDTO;
+use app\core\model\base\InterfaceDTO;
 
 interface InterfaceDAO{
 
-    public function save(UsuarioDTO $object): void;
+    public function save(InterfaceDTO $object): void;
 
-    public function load($id): UsuarioDTO;
+    public function load($id): InterfaceDTO;
 
     public function update($object): void;
 
