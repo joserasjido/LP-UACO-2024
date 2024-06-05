@@ -5,9 +5,14 @@ namespace app\libs\connection;
 final class Connection{
 
     public static function get(){
-        $user = "root";
-        $pass = "";
-        return new \PDO('mysql:host=localhost;dbname=lp_practica_2024', $user, $pass);
+        return new \PDO(
+            DB_DSN,
+            DB_USER,
+            DB_PASS,
+            [
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
+            ]
+        );
     }
 
 }

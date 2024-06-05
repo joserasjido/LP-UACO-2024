@@ -11,11 +11,11 @@ final class UsuarioDAO extends DAO implements InterfaceDAO{
 
     public function __construct($conn)
     {
-        parent::__construct($conn);
+        parent::__construct($conn, "usuarios");
     }
 
     public function save(InterfaceDTO $object): void{
-        $sql = "INSERT INTO usuarios VALUES (DEFAULT, :apellido, :nombres, :cuenta, '12345', 'joserasjido@gmail.com', 1, 1, '', '', NOW(), 0)";
+        $sql = "INSERT INTO {$this->table} VALUES (DEFAULT, :apellido, :nombres, :cuenta, '12345', 'joserasjido@gmail.com', 1, 1, '', '', NOW(), 0)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute($object->toArray());
     }
@@ -24,7 +24,7 @@ final class UsuarioDAO extends DAO implements InterfaceDAO{
         return new UsuarioDTO();
     }
 
-    public function update($object): void{
+    public function update(InterfaceDTO $object): void{
 
     }
 

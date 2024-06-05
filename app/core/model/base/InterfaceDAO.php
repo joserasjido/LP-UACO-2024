@@ -10,7 +10,7 @@ interface InterfaceDAO{
 
     public function load($id): InterfaceDTO;
 
-    public function update($object): void;
+    public function update(InterfaceDTO $object): void;
 
     public function delete($id): void;
 
