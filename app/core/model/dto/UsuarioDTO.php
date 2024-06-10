@@ -18,6 +18,15 @@ final class UsuarioDTO implements InterfaceDTO{
         $this->setApellido($data["apellido"] ?? "");
         $this->setNombres($data["nombres"] ?? "");
         $this->setCuenta($data["cuenta"] ?? "");
+        $this->setClave($data["clave"] ?? "");
+        $this->setCorreo($data["correo"] ?? "");
+        $this->setPerfilId($data["perfilId"] ?? 0);
+        $this->setEstado($data["estado"] ?? 1);
+        $this->setHoraEntrada($data["horaEntrada"] ?? "");
+        $this->setHoraSalida($data["horaSalida"] ?? "");
+        $this->setFechaAlta($data["fechaAlta"] ?? "");
+        $this->setResetear($data["resetear"] ?? 0);
+
     }
 
     // ************** GETTERS *****************
@@ -103,16 +112,63 @@ final class UsuarioDTO implements InterfaceDTO{
             : "";
     }
 
+    public function setClave($clave): void {
+        $this->clave = 
+            is_string($clave) && preg_match('/^[a-zA-Z0-9]{6,15}$/', $clave)
+            ? $clave
+            : "";
+    }
+
+    public function setCorreo($correo): void {
+        $this->correo = 
+            is_string($correo) && filter_var($correo, FILTER_VALIDATE_EMAIL)
+            ? $correo
+            : "";
+    }
+
+    public function setPerfilId($id): void {
+        $this->perfilId = (is_integer($id) && $id > 0) ? $id : 0;
+    }
+
+    public function setEstado($estado): void {
+        $this->estado = ($estado === 0 || $estado === 1) ? $estado : 1;
+    }
+
+    public function setHoraEntrada($hora): void {
+        $this->horaEntrada = 
+            is_string($hora)
+            ? $hora
+            : "";
+    }
+
+    public function setHoraSalida($hora): void {
+        $this->horaSalida = 
+            is_string($hora)
+            ? $hora
+            : "";
+    }
+
+    public function setFechaAlta($fecha): void {
+        $this->fechaAlta = 
+            is_string($fecha)
+            ? $fecha
+            : "";
+    }
+
+    public function setResetear($resetear): void {
+        $this->resetear = ($resetear === 0 || $resetear === 1) ? $resetear : 0;
+    }
+
+
     // ************** MÉTODOS *****************
 
 
     public function toArray(): array{
         return [
-            //"id"        => $this->getId(),
+            "id"        => $this->getId(),
             "apellido"  => $this->getApellido(),
             "nombres"   => $this->getNombres(),
-            "cuenta"    => $this->getCuenta()
-            /*
+            "cuenta"    => $this->getCuenta(),
             "clave"     => $this->getClave(),
             "correo"    => $this->getCorreo(),
             "perfilId"  => $this->getPerfilId(),
@@ -121,7 +177,6 @@ final class UsuarioDTO implements InterfaceDTO{
             "horaSalida"    => $this->getHoraSalida(),
             "fechaAlta"     => $this->getFechaAlta(),
             "resetear"      => $this->getResetear()
-            */
         ];
     }
     

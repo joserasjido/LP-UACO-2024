@@ -3,6 +3,9 @@
 <head>
     <?php
         require_once "includes/head.php";
+        foreach($this->scripts as $script){
+            echo '<script defer type="text/javascript" src="' . $script . '"></script>';
+        }
     ?>
 </head>
 <body>
@@ -15,7 +18,7 @@
     <main>
         <?php
 
-            require_once APP_VIEWS . $view;
+            require_once APP_VIEWS . $this->view;
         ?>
     </main>
     <footer>
