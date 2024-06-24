@@ -17,6 +17,7 @@ final class Autentication{
         if($stmt->rowCount() !== 1){
             throw new \Exception("El usuario o la clave es inválido");
         }
+
         $cuenta = $stmt->fetch();
 
         if(!password_verify($pass, $cuenta->clave)){

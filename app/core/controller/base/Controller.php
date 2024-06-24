@@ -10,12 +10,5 @@ class Controller{
     {
         $this->view = "";
         $this->scripts = $scripts;
-        $this->response = [
-            "controlador"   => "",
-            "accion"        => "",
-            "error"         => "",
-            "mensaje"       => "",
-            "result"        => []
-        ];
     }
 }

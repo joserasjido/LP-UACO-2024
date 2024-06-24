@@ -4,6 +4,8 @@ namespace app\core\controller;
 
 use app\core\controller\base\Controller;
 use app\libs\autentication\Autentication;
+use app\libs\request\Request;
+use app\libs\response\Response;
 
 final class AutenticacionController extends Controller{
 
@@ -20,23 +22,13 @@ final class AutenticacionController extends Controller{
         require_once APP_TEMPLATE . "template.php";
     }
 
-    public function login(): void{
-        $data = json_decode(file_get_contents("php://input"), true);
-        $this->response["controlador"] = "autenticacion";
-        $this->response["accion"] = "login";
-        try{
-            Autentication::login($data["usuario"], $data["clave"]);
-            
-            header("location:" . APP_URL . "usuario/index");
-            die();
-        }
-        catch(\Exception $ex){
-            $this->response["error"] = $ex->getMessage();
-        }
+    public function login(Request $request, Response $response): void{
+        $data = $request->getData();
 
-        header("Content-Type: application/json; charset=utf-8");
-        echo json_encode($this->response);
+        Autentication::login($data["usuario"], $data["clave"]);
+        $response->setMessage("OK");
 
+        $response->send();
     }
 
     public function logout(): void{

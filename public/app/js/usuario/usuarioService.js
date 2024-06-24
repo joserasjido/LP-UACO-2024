@@ -1,6 +1,6 @@
 let userService = {
     save: (data)=>{
-        fetch("usuario/save", {
+        return fetch("usuario/save", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -13,15 +13,6 @@ let userService = {
                 throw new Error(response.status)
             }
             return response.json()
-        })
-        .then(data => {
-            if(data.error != ""){
-                console.error("Error interno")
-            }
-            else{
-                console.info("todo bien")
-            }
-            console.log("Respuesta del servidor", data)
         })
         .catch(error => {
             console.error("ERROR EN LA PETICION", error)

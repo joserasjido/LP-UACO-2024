@@ -1,10 +1,15 @@
 let authController = {
     data: {
-        usuario: "danielperez",
-        clave: "daniel123"
+        usuario: "joserasjido",
+        clave: "joserasjido"
     },
     login: ()=>{
         authService.login(authController.data)
+        .then(response => {
+            if(response.error === "" && response.mensaje === "OK"){
+                window.location.href = "usuario/index"
+            }
+        })
     }
 }
 

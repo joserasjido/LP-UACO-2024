@@ -2,6 +2,9 @@
 
 namespace app\core\controller\base;
 
+use app\libs\request\Request;
+use app\libs\response\Response;
+
 interface InterfaceController{
 
     /**
@@ -28,7 +31,7 @@ interface InterfaceController{
      * Gestiona los servicios correspondientes, para el alta de una nueva entidad en el sistema.
      * @return void
      */
-    public function save(): void;
+    public function save(Request $request, Response $response): void;
     
     /**
      * Invoca la vista correspondiente, para poder modificar los datos de una entidad existente en el sistema.

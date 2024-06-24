@@ -107,16 +107,13 @@ final class UsuarioDTO implements InterfaceDTO{
 
     public function setCuenta($cuenta): void {
         $this->cuenta = 
-            is_string($cuenta) && preg_match('/^[a-zA-Z0-9]{6,10}$/', $cuenta)
+            is_string($cuenta) && preg_match('/^[a-zA-Z0-9]{6,15}$/', $cuenta)
             ? $cuenta
             : "";
     }
 
     public function setClave($clave): void {
-        $this->clave = 
-            is_string($clave) && preg_match('/^[a-zA-Z0-9]{6,15}$/', $clave)
-            ? $clave
-            : "";
+        $this->clave = $clave;
     }
 
     public function setCorreo($correo): void {

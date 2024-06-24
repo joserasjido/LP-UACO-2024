@@ -5,6 +5,8 @@ namespace app\core\controller;
 use app\core\controller\base\Controller;
 use app\core\controller\base\InterfaceController;
 use app\core\service\UsuarioService;
+use app\libs\request\Request;
+use app\libs\response\Response;
 
 final class UsuarioController extends Controller implements InterfaceController{
 
@@ -30,23 +32,12 @@ final class UsuarioController extends Controller implements InterfaceController{
         require_once APP_TEMPLATE . "template.php";
     }
 
-    public function save(): void{
-        $data = json_decode(file_get_contents("php://input"), true);
+    public function save(Request $request, Response $response): void{
 
-        $this->response["controlador"] = "usuario";
-        $this->response["accion"] = "save";
-
-        try{
-            $service = new UsuarioService();
-            $service->save($data);
-            $this->response["mensaje"] = "La cuenta se registró correctamente";
-        }
-        catch(\Exception $ex){
-            $this->response["error"] = $ex->getMessage();
-        }
-
-        header("Content-Type: application/json; charset=utf-8");
-        echo json_encode($this->response);
+        $service = new UsuarioService();
+        $service->save($request->getData());
+        $response->setMessage("La cuenta se registró correctamente");
+        $response->send();
     }
     
     public function edit($id): void{

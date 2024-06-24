@@ -4,7 +4,7 @@ let userController = {
         apellido: "Perez",
         nombres: "Daniel",
         cuenta: "danielperez",
-        clave: "daniel123",
+        clave: "danielperez",
         correo: "daniel@prueba.com",
         perfilId: 2,
         horaEntrada: "",
@@ -12,13 +12,19 @@ let userController = {
     },
     save: ()=>{
         userService.save(userController.data)
+        .then(response => {
+            console.log("Respuesta del servidor", response)
+        })
     }
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
     let btnUsuarioAlta = document.getElementById("btnUsuarioAlta")
     //btnUsuarioAlta.onclick = userController.save
-    btnUsuarioAlta.onclick = () => {
-        userController.save()
+    if(btnUsuarioAlta != null){
+        btnUsuarioAlta.onclick = () => {
+            userController.save()
+        }
     }
+    
 })
