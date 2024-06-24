@@ -19,6 +19,8 @@ final class UsuarioController extends Controller implements InterfaceController{
     }
 
     public function index(): void{
+        $service = new UsuarioService();
+        $data = $service->list();
         $this->view = "usuario/index.php";
         require_once APP_TEMPLATE . "template.php";
     }
@@ -33,7 +35,6 @@ final class UsuarioController extends Controller implements InterfaceController{
     }
 
     public function save(Request $request, Response $response): void{
-
         $service = new UsuarioService();
         $service->save($request->getData());
         $response->setMessage("La cuenta se registró correctamente");

@@ -12,6 +12,7 @@ final class ExceptionHandlerMiddleware extends Middleware implements MiddlewareI
     public function handler(Request $request, Response $response): void{
         try{
             $this->next($request, $response);
+            
         }
         catch(\Exception $ex){
             $response->setError($ex->getMessage());

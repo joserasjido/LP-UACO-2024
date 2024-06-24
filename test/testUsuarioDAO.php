@@ -9,12 +9,12 @@ require_once "../app/config/DBConfig.php";
 require_once "../app/vendor/autoload.php";
 
 $user = new UsuarioDTO([
-    "apellido"  => "Rasjido",
-    "nombres"   => "Jose Alberto",
-    "cuenta"    => "joserasjido",
-    "correo"    => "jrasjido@gmail.com",
-    "clave"     => "joserasjido",
-    "perfilId"  => 1,
+    "apellido"  => "Estebanez",
+    "nombres"   => "Fabián",
+    "cuenta"    => "fabianestebanez",
+    "correo"    => "fabianestebanez@gmail.com",
+    "clave"     => "fabianestebanez",
+    "perfilId"  => 2,
     "horaEntrada"   => "",
     "horaSalida"   => ""
 ]);

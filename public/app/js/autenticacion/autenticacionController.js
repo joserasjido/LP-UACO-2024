@@ -1,7 +1,7 @@
 let authController = {
     data: {
-        usuario: "joserasjido",
-        clave: "joserasjido"
+        usuario: "danielperez",
+        clave: "daniel123"
     },
     login: ()=>{
         authService.login(authController.data)
